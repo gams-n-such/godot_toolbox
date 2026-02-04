@@ -18,3 +18,6 @@ var value : float:
 func remove() -> void:
 	if attribute:
 		attribute.remove_modifier(self)
+
+func _enter_tree() -> void:
+	assert(get_parent() is DynamicAttribute, "AttributeMods are only supported by DynamicAttributes, but parent is " + str(get_parent().get_class()))
