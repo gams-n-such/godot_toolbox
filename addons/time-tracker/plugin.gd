@@ -1,15 +1,22 @@
 @tool
 extends EditorPlugin
 
+var _dock : EditorDock
 var _dock_instance : Control
 
 const STORED_SESSIONS_PATH : String = "user://.tracked-sessions.json"
 
 func _enter_tree() -> void:
+	_dock = EditorDock.new()
+	_dock.title = "TimeTracker"
+	_dock.dock_icon = preload("./plugin-icon.png")
+	_dock.default_slot = EditorDock.DOCK_SLOT_RIGHT_BL
+
 	_dock_instance = load("res://addons/time-tracker/ui/TrackerDock.tscn").instantiate()
 	_dock_instance.editor_plugin = self
-	_dock_instance.name = "TimeTracker"
-	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, _dock_instance)
+	_dock.add_child(_dock_instance)
+
+	add_dock(_dock)
 
 	_load_sessions()
 	_dock_instance.sessions_changed.connect(_store_sessions)
@@ -19,7 +26,7 @@ func _enter_tree() -> void:
 	# Try to find controls immediately (it will fail if not ready yet).
 	_on_editor_base_ready()
 	# Also connect to the ready signal, so that it is correctly detected then.
-	var editor_base = get_editor_interface().get_base_control()
+	var editor_base = EditorInterface.get_base_control()
 	editor_base.ready.connect(_on_editor_base_ready)
 	# And connect to the signal that will trigger when a user actually interacts with top buttons.
 	main_screen_changed.connect(_on_main_screen_changed)
@@ -27,8 +34,8 @@ func _enter_tree() -> void:
 func _exit_tree() -> void:
 	_store_sessions()
 
-	remove_control_from_docks(_dock_instance)
-	_dock_instance.queue_free()
+	remove_dock(_dock)
+	_dock.queue_free()
 
 func _load_sessions() -> void:
 	_load_sessions_from_file(STORED_SESSIONS_PATH)
@@ -75,7 +82,7 @@ func _store_sessions_to_file(file_path : String) -> void:
 	file.close()
 
 func _on_editor_base_ready() -> void:
-	var editor_base = get_editor_interface().get_base_control()
+	var editor_base = EditorInterface.get_base_control()
 	if (!editor_base.is_inside_tree() || editor_base.get_child_count() == 0):
 		return
 
@@ -109,7 +116,7 @@ func _on_editor_base_ready() -> void:
 		if (!(child_node is HBoxContainer)):
 			continue
 
-		var potential_button : Button = child_node.get_child(0)
+		var potential_button := child_node.get_child(0) as Button
 		if (!potential_button || !is_instance_valid(potential_button)):
 			continue
 		# 2D or 3D is pretty much guaranteed to be there. We have to check it
