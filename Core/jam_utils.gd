@@ -80,3 +80,16 @@ static func get_interactable_2d_from(child_node : Node) -> InteractionVolume2D:
 	return trigger
 
 #endregion
+
+#region Input
+
+static func get_move_input_dir_2d() -> Vector2:
+	return Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+
+static func get_move_input_dir_3d() -> Vector3:
+	var dir_horizontal := get_move_input_dir_2d()
+	var axis_vertical := Input.get_axis("crouch", "jump")
+	var dir_3d := Vector3(dir_horizontal.x, axis_vertical, dir_horizontal.y)
+	return dir_3d
+
+#endregion
