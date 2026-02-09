@@ -1,6 +1,9 @@
 @abstract class_name PlayerCharacter3D
 extends CharacterBody3D
 
+func _ready() -> void:
+	_open_hud()
+
 func _process(delta: float) -> void:
 	_process_camera(delta)
 
@@ -13,8 +16,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		Game.open_pause_menu()
 
+#region HUD
+
+@export var hud_scene : PackedScene
+
+func _open_hud() -> void:
+	if hud_scene:
+		var hud := hud_scene.instantiate() as Control
+		Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_hud, hud)
+
+#endregion
+
 #region Camera
 
+# TODO: separate camera to a different scene?
 @abstract func _process_camera(delta : float) -> void
 
 #endregion

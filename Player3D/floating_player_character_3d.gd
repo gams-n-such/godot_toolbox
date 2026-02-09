@@ -2,6 +2,7 @@ class_name FloatingPlayerCharacter3D
 extends PlayerCharacter3D
 
 func _ready() -> void:
+	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
