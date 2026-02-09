@@ -24,20 +24,28 @@ func quit_to_desktop() -> void:
 #region Scenes
 
 @export_category("Scenes")
-@export var menu_scene : PackedScene
+@export var title_scene : PackedScene
 @export var gameplay_scene : PackedScene
 
 func load_title_scene() -> void:
-	get_tree().change_scene_to_packed(menu_scene)
+	load_level(title_scene)
 
 func load_gameplay_scene() -> void:
-	get_tree().change_scene_to_packed(gameplay_scene)
+	load_level(gameplay_scene)
 
 func load_level(level_scene : PackedScene) -> void:
 	if level_scene:
+		pre_level_change()
 		get_tree().change_scene_to_packed(level_scene)
+		post_level_change()
 	else:
 		push_error("Trying to load empty level")
+
+func pre_level_change() -> void:
+	canvas_manager.clear_layer(JamUtils.layer_ui_menu)
+
+func post_level_change() -> void:
+	pass
 
 #endregion
 
