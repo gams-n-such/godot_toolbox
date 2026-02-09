@@ -33,6 +33,12 @@ func load_title_scene() -> void:
 func load_gameplay_scene() -> void:
 	get_tree().change_scene_to_packed(gameplay_scene)
 
+func load_level(level_scene : PackedScene) -> void:
+	if level_scene:
+		get_tree().change_scene_to_packed(level_scene)
+	else:
+		push_error("Trying to load empty level")
+
 #endregion
 
 #region UI
