@@ -9,6 +9,10 @@ func _physics_process(delta: float) -> void:
 	#_process_input(SPEED, ACCELERATION, DECELERATION)
 	_process_velocity()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		Game.open_pause_menu()
+
 #region Camera
 
 @abstract func _process_camera(delta : float) -> void

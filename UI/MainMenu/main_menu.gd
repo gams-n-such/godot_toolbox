@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready() -> void:
-	pass
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_play_button_pressed() -> void:
 	Game.start_game()

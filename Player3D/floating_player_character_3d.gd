@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 	_process_velocity()
 
 func _unhandled_input(event: InputEvent) -> void:
+	super._unhandled_input(event)
 	_mouse_moving = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	if _mouse_moving:
 		var mouse_event = event as InputEventMouseMotion

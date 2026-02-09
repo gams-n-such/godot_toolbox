@@ -12,6 +12,25 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("debug_mouse"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE
 
+#region Pause
+
+var _active_pause_menu : Control
+
+func open_pause_menu() -> void:
+	assert(not _active_pause_menu)
+	_active_pause_menu = pause_menu_scene.instantiate() as Control
+	canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _active_pause_menu)
+
+func pause() -> void:
+	get_tree().paused = true
+
+func unpause() -> void:
+	get_tree().paused = false
+
+#endregion
+
+#region Game
+
 func start_game() -> void:
 	load_gameplay_scene()
 
@@ -21,11 +40,14 @@ func quit_to_title() -> void:
 func quit_to_desktop() -> void:
 	get_tree().quit()
 
+#endregion
+
 #region Scenes
 
 @export_category("Scenes")
 @export var title_scene : PackedScene
 @export var gameplay_scene : PackedScene
+@export var pause_menu_scene : PackedScene
 
 func load_title_scene() -> void:
 	load_level(title_scene)
