@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dpoay026t1lnn"]
+
+[ext_resource type="Script" uid="uid://c6v81rd7nylrq" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
+
+[node name="MainMenu" type="Control" unique_id=362125495]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jld46")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1019969113]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

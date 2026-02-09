@@ -11,6 +11,9 @@ const group_interactable := &"Interactable"
 # Common node names:
 const nodepath_health := "Health"
 
+# UI layers:
+const layer_ui_menu := &"Menu"
+
 #endregion
 
 #region Nodes

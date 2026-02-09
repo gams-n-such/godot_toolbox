@@ -34,3 +34,10 @@ func load_gameplay_scene() -> void:
 	get_tree().change_scene_to_packed(gameplay_scene)
 
 #endregion
+
+#region UI
+
+# TODO: this shall not work in split-scren
+var canvas_manager : CanvasManager = null
+
+#endregion
