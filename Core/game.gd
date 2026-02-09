@@ -16,7 +16,7 @@ func start_game() -> void:
 	load_gameplay_scene()
 
 func quit_to_title() -> void:
-	load_menu_scene()
+	load_title_scene()
 
 func quit_to_desktop() -> void:
 	get_tree().quit()
@@ -27,7 +27,7 @@ func quit_to_desktop() -> void:
 @export var menu_scene : PackedScene
 @export var gameplay_scene : PackedScene
 
-func load_menu_scene() -> void:
+func load_title_scene() -> void:
 	get_tree().change_scene_to_packed(menu_scene)
 
 func load_gameplay_scene() -> void:
