@@ -9,5 +9,8 @@ default_camera_layers = 1
 
 [node name="CanvasManager" parent="." unique_id=2009050083 instance=ExtResource("2_xt2r0")]
 
+[node name="HUD" type="CanvasLayer" parent="CanvasManager" unique_id=994595691]
+layer = 55
+
 [node name="Menu" type="CanvasLayer" parent="CanvasManager" unique_id=254975533]
 layer = 100
