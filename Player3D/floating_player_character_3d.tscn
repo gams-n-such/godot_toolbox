@@ -10,7 +10,7 @@ radius = 0.4
 [sub_resource type="SphereMesh" id="SphereMesh_2tprb"]
 material = ExtResource("2_wn7dt")
 
-[node name="FloatingPlayerCharacter3D" type="CharacterBody3D" unique_id=428254066]
+[node name="FloatingPlayerCharacter3D" type="CharacterBody3D" unique_id=428254066 groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_2tprb")
 hud_scene = ExtResource("2_24otk")

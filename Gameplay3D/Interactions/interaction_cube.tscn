@@ -8,7 +8,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_kx2t0"]
 material = ExtResource("2_kx2t0")
 
-[node name="InteractionCube" type="Area3D" unique_id=1303982047 groups=["Interactable"]]
+[node name="InteractionCube" type="Area3D" unique_id=1303982047 groups=["Interactables"]]
 collision_layer = 0
 collision_mask = 0
 monitoring = false

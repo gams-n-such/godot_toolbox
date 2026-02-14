@@ -9,7 +9,7 @@ resource_local_to_scene = true
 [sub_resource type="SphereMesh" id="SphereMesh_nb4cp"]
 material = ExtResource("2_kumkv")
 
-[node name="InteractionSphere" type="Area3D" unique_id=1303982047 groups=["Interactable"]]
+[node name="InteractionSphere" type="Area3D" unique_id=1303982047 groups=["Interactables"]]
 collision_layer = 0
 collision_mask = 0
 monitoring = false

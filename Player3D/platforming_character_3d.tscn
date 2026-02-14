@@ -9,7 +9,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3kwwo"]
 material = ExtResource("2_ym21q")
 
-[node name="PlatformingCharacter3D" type="CharacterBody3D" unique_id=1945718915]
+[node name="PlatformingCharacter3D" type="CharacterBody3D" unique_id=1945718915 groups=["Player"]]
 script = ExtResource("1_d27nr")
 hud_scene = ExtResource("2_3kwwo")
 
