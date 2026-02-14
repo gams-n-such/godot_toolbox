@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://biqgwgkha8lqk"]
+
+[node name="PlayerTrigger3D" type="Area3D" unique_id=1180047365]
+monitorable = false
