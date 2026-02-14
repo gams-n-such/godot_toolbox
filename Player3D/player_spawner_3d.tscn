@@ -5,4 +5,6 @@
 [node name="PlayerSpawner3D" type="Node3D" unique_id=3755359]
 script = ExtResource("1_qaw2v")
 
-[node name="Timer" type="Timer" parent="." unique_id=1543847450]
+[node name="Cooldown" type="Timer" parent="." unique_id=1543847450]
+unique_name_in_owner = true
+one_shot = true

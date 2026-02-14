@@ -16,8 +16,17 @@ func _find_active_player() -> Node3D:
 func get_default_spawn_transform() -> Transform3D:
 	return JamUtils.get_unscaled_transform_3d(global_transform)
 
+func is_on_cooldown() -> bool:
+	return not %Cooldown.is_stopped()
+
+func start_cooldown() -> void:
+	%Cooldown.start()
+
 func respawn_player() -> void:
+	if is_on_cooldown():
+		return
 	assert(player_scene)
+	start_cooldown()
 	var active_player := _find_active_player()
 	if active_player:
 		active_player.queue_free()
