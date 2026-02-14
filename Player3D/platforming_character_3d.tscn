@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dh2u7lrm15ac3"]
+
+[ext_resource type="Script" uid="uid://dw568vynwpfvq" path="res://Player3D/platforming_character_3d.gd" id="1_d27nr"]
+[ext_resource type="PackedScene" uid="uid://c6uqpxfa40845" path="res://UI/HUD/hud.tscn" id="2_3kwwo"]
+[ext_resource type="Material" uid="uid://b3dtgg8ikkf3j" path="res://Player3D/dev_player_material.tres" id="2_ym21q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d27nr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3kwwo"]
+material = ExtResource("2_ym21q")
+
+[node name="PlatformingCharacter3D" type="CharacterBody3D" unique_id=1945718915]
+script = ExtResource("1_d27nr")
+hud_scene = ExtResource("2_3kwwo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1613465108]
+shape = SubResource("CapsuleShape3D_d27nr")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=1857227979]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera3D" parent="CameraController" unique_id=302261655]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1.751955, 1.6525111)
+cull_mask = 524287
+current = true
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=335864060]
+mesh = SubResource("CapsuleMesh_3kwwo")
