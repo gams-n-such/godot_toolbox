@@ -65,6 +65,7 @@ func load_level(level_scene : PackedScene) -> void:
 
 func pre_level_change() -> void:
 	canvas_manager.clear_layer(JamUtils.layer_ui_menu)
+	free_transient_scenes()
 
 func post_level_change() -> void:
 	pass
@@ -73,7 +74,27 @@ func post_level_change() -> void:
 
 #region UI
 
-# TODO: this shall not work in split-scren
+# TODO: this shall not work in split-scren = cannot make it an autoload
 var canvas_manager : CanvasManager = null
+
+#endregion
+
+#region Transients
+# TODO: move to separate script
+# TODO: support non-Node objects?
+
+# These will be deleted when changing scenes
+# TODO: optimize by making it a dictionary?
+var transient_scenes : Array[Node]
+
+func register_transient_scene(scene_instance : Node) -> void:
+	assert(scene_instance)
+	if not transient_scenes.has(scene_instance):
+		transient_scenes.append(scene_instance)
+
+func free_transient_scenes() -> void:
+	for scene in transient_scenes:
+		if is_instance_valid(scene):
+			scene.queue_free()
 
 #endregion
