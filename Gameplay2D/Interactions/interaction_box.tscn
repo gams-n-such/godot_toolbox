@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://colpnyefp6dpj"]
 
-[ext_resource type="Script" uid="uid://dvg7w5r7q1hy3" path="res://Gameplay/Interactions2D/interaction_volume_2d.gd" id="1_h0jb4"]
+[ext_resource type="Script" uid="uid://dvg7w5r7q1hy3" path="res://Gameplay2D/Interactions/interaction_volume_2d.gd" id="1_h0jb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0jb4"]
 size = Vector2(100, 100)

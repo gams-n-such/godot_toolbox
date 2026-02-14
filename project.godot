@@ -24,6 +24,19 @@ Game="*uid://cs34d64dgwg7p"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/time-tracker/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Core/": "gray",
+"res://Gameplay/": "teal",
+"res://Gameplay2D/": "teal",
+"res://Gameplay3D/": "teal",
+"res://LevelDesign3D/": "yellow",
+"res://Player3D/": "red",
+"res://TestScenes/": "orange",
+"res://UI/": "green"
+}
+
 [input]
 
 debug_exit={

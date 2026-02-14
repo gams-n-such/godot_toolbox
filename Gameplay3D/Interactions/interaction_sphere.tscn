@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ca3h660m4iob6"]
 
-[ext_resource type="Script" uid="uid://dw5fy1cb01uj3" path="res://Gameplay/Interactions3D/interaction_volume_3d.gd" id="1_ocqjw"]
-[ext_resource type="Material" uid="uid://ja4aorford4a" path="res://Gameplay/Interactions3D/dev_interaction_material.tres" id="2_kumkv"]
+[ext_resource type="Script" uid="uid://dw5fy1cb01uj3" path="res://Gameplay3D/Interactions/interaction_volume_3d.gd" id="1_ocqjw"]
+[ext_resource type="Material" uid="uid://ja4aorford4a" path="res://Gameplay3D/Interactions/dev_interaction_material.tres" id="2_kumkv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wtup5"]
 resource_local_to_scene = true
