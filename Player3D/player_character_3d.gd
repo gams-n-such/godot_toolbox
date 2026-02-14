@@ -2,7 +2,10 @@
 extends CharacterBody3D
 
 func _ready() -> void:
-	_open_hud()
+	_show_hud()
+
+func _exit_tree() -> void:
+	_hide_hud()
 
 func _process(delta: float) -> void:
 	_process_camera(delta)
@@ -20,10 +23,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 @export var hud_scene : PackedScene
 
-func _open_hud() -> void:
+func _show_hud() -> void:
 	if hud_scene:
 		var hud := hud_scene.instantiate() as Control
-		Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_hud, hud)
+		Game.canvas_manager.set_layer_content(JamUtils.layer_ui_hud, hud)
+
+func _hide_hud() -> void:
+	Game.canvas_manager.clear_layer(JamUtils.layer_ui_hud)
 
 #endregion
 
