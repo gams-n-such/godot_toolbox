@@ -30,6 +30,20 @@ static func find_parent_in_group(child_node : Node, group : StringName) -> Node:
 
 #endregion
 
+#region Transforms2D
+
+static func get_unscaled_transform_2d(transform : Transform2D) -> Transform2D:
+	return Transform2D(transform.get_rotation(),transform.origin)
+
+#endregion
+
+#region Transforms3D
+
+static func get_unscaled_transform_3d(transform : Transform3D) -> Transform3D:
+	return Transform3D(Basis(transform.basis.get_rotation_quaternion()), transform.origin)
+
+#endregion
+
 #region Damage
 
 static func get_damageable_from(child_node : Node) -> Node:
