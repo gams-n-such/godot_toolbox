@@ -55,7 +55,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 
 size = Vector3(20, 3, 1)
 
 [node name="PlatformingPlayerSpawner" parent="." unique_id=3755359 instance=ExtResource("5_6sg15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.968419, 0, -6.1156273)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.7688355, 0, -6.1156273)
 player_scene = ExtResource("6_qyj61")
 
 [node name="PlayerTriggerSphere" parent="PlatformingPlayerSpawner" unique_id=1803791410 instance=ExtResource("7_4ksgo")]
@@ -63,7 +63,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 
 [node name="NodeName3D" parent="PlatformingPlayerSpawner" unique_id=1164896097 instance=ExtResource("8_4ksgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3564985, 0)
+visibility_range_end = 10.0
 text = "PlatformingPlayerSpawner"
 font_size = 48
 
+[node name="FloatingPlayerSpawner" parent="." unique_id=1411470238 instance=ExtResource("5_6sg15")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.083663, 0, -6.1156273)
+player_scene = ExtResource("3_fktsr")
+
+[node name="PlayerTriggerSphere" parent="FloatingPlayerSpawner" unique_id=717506866 instance=ExtResource("7_4ksgo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+
+[node name="NodeName3D" parent="FloatingPlayerSpawner" unique_id=1646948914 instance=ExtResource("8_4ksgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3564985, 0)
+visibility_range_end = 10.0
+text = "FloatingPlayerSpawner"
+font_size = 48
+
 [connection signal="body_entered" from="PlatformingPlayerSpawner/PlayerTriggerSphere" to="PlatformingPlayerSpawner" method="respawn_player" unbinds=1]
+[connection signal="body_entered" from="FloatingPlayerSpawner/PlayerTriggerSphere" to="FloatingPlayerSpawner" method="respawn_player" unbinds=1]
