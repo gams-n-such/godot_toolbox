@@ -5,11 +5,21 @@ func _ready() -> void:
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_mouse_rotation = global_basis.get_euler() * Vector3.UP
+	interaction_ray.add_exception(self)
 
 func _physics_process(delta: float) -> void:
 	#_process_gravity(delta)
 	_process_input(delta, speed, acceleration, deceleration)
 	_process_velocity()
+
+@onready var interaction_ray := %InteractionRay3D
+
+func _input(event: InputEvent) -> void:
+	super._input(event)
+	if event.is_action(&"interact"):
+		if interaction_ray.current_target:
+			# TODO: HUD
+			JamUtils.begin_interaction(self, interaction_ray.current_target)
 
 func _unhandled_input(event: InputEvent) -> void:
 	super._unhandled_input(event)

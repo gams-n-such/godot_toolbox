@@ -99,6 +99,13 @@ static func deal_damage(target : Node, damage : float) -> bool:
 
 const _activatable_getter := &"get_activatable"
 
+static func begin_interaction(instigator : Node, target : Node) -> bool:
+	var activatable := get_activatable_from(target)
+	if activatable:
+		activatable.activate(instigator)
+		return true
+	return false
+
 static func get_activatable_from(child_node : Node) -> Activatable:
 	var interactable := find_parent_in_group(child_node, group_interactable)
 	if not interactable:
