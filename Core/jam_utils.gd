@@ -44,6 +44,30 @@ static func get_unscaled_transform_3d(transform : Transform3D) -> Transform3D:
 
 #endregion
 
+#region Groups
+
+static func get_shared_groups(node_a : Node, node_b : Node) -> Array[StringName]:
+	return get_groups_shared_by_node(node_a, node_b.get_groups())
+
+static func get_groups_shared_by_node(node : Node, groups : Array[StringName]) -> Array[StringName]:
+	var result : Array[StringName]
+	if not node:
+		return []
+	for group in groups:
+		if node.is_in_group(group):
+			result.append(group)
+	return result
+
+static func is_node_in_groups(node : Node, groups : Array[StringName]) -> bool:
+	if not node:
+		return false
+	for group in groups:
+		if node.is_in_group(group):
+			return true
+	return false
+
+#endregion
+
 #region Damage
 
 static func get_damageable_from(child_node : Node) -> Node:
