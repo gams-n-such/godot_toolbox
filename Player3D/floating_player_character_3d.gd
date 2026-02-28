@@ -4,6 +4,7 @@ extends PlayerCharacter3D
 func _ready() -> void:
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_mouse_rotation = global_basis.get_euler() * Vector3.UP
 
 func _physics_process(delta: float) -> void:
 	#_process_gravity(delta)

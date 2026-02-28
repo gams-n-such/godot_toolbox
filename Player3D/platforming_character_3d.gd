@@ -5,6 +5,7 @@ extends PlayerCharacter3D
 func _ready() -> void:
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_mouse_rotation = global_basis.get_euler() * Vector3.UP
 
 func _physics_process(delta: float) -> void:
 	_process_gravity(delta)
@@ -68,10 +69,7 @@ var _player_rotation : Vector3
 var _camera_rotation : Vector3
 @export var mouse_sensitivity : float = 0.5
 
-var _saved_yaw_input : float
-
 func _process_camera(delta : float) -> void:
-	_saved_yaw_input = _input_yaw
 	_mouse_rotation.x += _input_pitch * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, MIN_TILT, MAX_TILT)
 	_mouse_rotation.y += _input_yaw * delta
