@@ -123,3 +123,27 @@ static func get_move_input_dir_3d() -> Vector3:
 	return dir_3d
 
 #endregion
+
+#region Random
+
+static func get_random_vector_2d() -> Vector2:
+	var result := Vector2.ZERO
+	result.x = randfn(0.0, 1.0)
+	result.y = randfn(0.0, 1.0)
+	result = result.normalized()
+	return result
+
+static func get_random_vector_3d() -> Vector3:
+	var result := Vector3.ZERO
+	result.x = randfn(0.0, 1.0)
+	result.y = randfn(0.0, 1.0)
+	result.z = randfn(0.0, 1.0)
+	result = result.normalized()
+	return result
+
+# Only randomizes hue, with fixed value, saturation, and alpha
+static func get_random_color(value : float = 1.0, saturation : float = 1.0, alpha : float = 1.0,) -> Color:
+	var random_hue := randf()
+	return Color.from_hsv(random_hue, saturation, value, alpha)
+
+#endregion
