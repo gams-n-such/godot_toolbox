@@ -1,6 +1,6 @@
 @tool
-class_name NodeName3D
-extends Label3D
+class_name NodeName2D
+extends Label
 
 
 func _ready() -> void:
