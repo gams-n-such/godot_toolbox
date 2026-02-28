@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bposkrfwo5wsd" path="res://Player3D/player_spawner_3d.tscn" id="5_6sg15"]
 [ext_resource type="PackedScene" uid="uid://dh2u7lrm15ac3" path="res://Player3D/platforming_character_3d.tscn" id="6_qyj61"]
 [ext_resource type="PackedScene" uid="uid://bc7t0l0n2v1lu" path="res://Gameplay3D/Triggers/player_trigger_sphere.tscn" id="7_4ksgo"]
+[ext_resource type="PackedScene" uid="uid://vfhedaqupk13" path="res://Gameplay3D/Labels/node_name_3d.tscn" id="8_4ksgo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fktsr"]
 sky_top_color = Color(0.23538089, 0.5855123, 0.7892152, 1)
@@ -53,11 +54,16 @@ size = Vector3(20, 3, 1)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 1.5, 0)
 size = Vector3(20, 3, 1)
 
-[node name="PlayerSpawner3D" parent="." unique_id=3755359 instance=ExtResource("5_6sg15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7710595, 0, -6.1156273)
+[node name="PlatformingPlayerSpawner" parent="." unique_id=3755359 instance=ExtResource("5_6sg15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.968419, 0, -6.1156273)
 player_scene = ExtResource("6_qyj61")
 
-[node name="PlayerTriggerSphere" parent="PlayerSpawner3D" unique_id=1803791410 instance=ExtResource("7_4ksgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72409487, 0)
+[node name="PlayerTriggerSphere" parent="PlatformingPlayerSpawner" unique_id=1803791410 instance=ExtResource("7_4ksgo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 
-[connection signal="body_entered" from="PlayerSpawner3D/PlayerTriggerSphere" to="PlayerSpawner3D" method="respawn_player" unbinds=1]
+[node name="NodeName3D" parent="PlatformingPlayerSpawner" unique_id=1164896097 instance=ExtResource("8_4ksgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3564985, 0)
+text = "PlatformingPlayerSpawner"
+font_size = 48
+
+[connection signal="body_entered" from="PlatformingPlayerSpawner/PlayerTriggerSphere" to="PlatformingPlayerSpawner" method="respawn_player" unbinds=1]
