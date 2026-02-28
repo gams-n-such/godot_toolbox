@@ -2,7 +2,7 @@ class_name InteractionVolume2D
 extends Area2D
 
 
-@export var target : Activatable
+@export var target : Node
 
 func get_activatable() -> Activatable:
-	return target
+	return JamUtils.get_activatable_from(target)
