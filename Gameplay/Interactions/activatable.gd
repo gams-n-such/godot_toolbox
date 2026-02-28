@@ -1,29 +1,47 @@
 class_name Activatable
 extends Node
 
+var _current_actor : Node = null
+
+#region Activation
+@export_category("Activation")
+
 signal activation_started(object : Activatable, actor : Node)
 signal activation_complete(object : Activatable, actor : Node)
 signal activation_aborted(object : Activatable, actor : Node)
 
-# TODO: implement prolonged activation
 @export var activation_period : float = 1.0
+
+# TODO: implement per-actor activations
+#@export var allow_parallel_activations : bool = false
 
 func is_instant() -> bool:
 	return activation_period <= 0.0
 
-var _current_actor : Node = null
+func can_be_activated_by(actor : Node) -> bool:
+	if not actor:
+		return false
+	if is_being_activated_by(actor):
+		return false
+	if is_on_cooldown_for(actor):
+		return false
+	if not is_instant() and is_being_activated():
+		return false
+	return true
 
-# TODO: parallel activations
-#@export var allow_parallel_activations : bool = false
+func is_being_activated() -> bool:
+	return _current_actor != null
+
+func is_being_activated_by(actor : Node) -> bool:
+	return _current_actor == actor
 
 func activate(actor : Node) -> bool:
-	# TODO: implement
 	if not can_be_activated_by(actor):
 		return false
 	_current_actor = actor
 	activation_started.emit(self, actor)
 	if not is_instant():
-		await get_tree().create_timer(activation_period).timeout
+		await get_tree().create_timer(activation_period, false).timeout
 		if not is_being_activated_by(actor):
 			return false
 	return _try_complete_activation(actor)
@@ -38,21 +56,63 @@ func abort_activation(actor : Node) -> bool:
 func _try_complete_activation(actor : Node) -> bool:
 	if not is_being_activated_by(actor):
 		return false
+	_default_cooldown_for_actor(actor)
 	_current_actor = null
 	activation_complete.emit(self, actor)
 	return true
 
-func can_be_activated_by(actor : Node) -> bool:
-	if not actor:
+#endregion
+
+#region Cooldown
+@export_category("Cooldown")
+# TODO: implement per-actor cooldowns
+
+signal cooldown_started(object : Activatable, actor : Node)
+signal cooldown_ended(object : Activatable, actor : Node)
+
+@export var cooldown_period : float = 0.0
+var _cooldown_timer : SceneTreeTimer = null
+
+func has_cooldown() -> bool:
+	return cooldown_period > 0.0
+
+func _default_cooldown() -> void:
+	start_cooldown(cooldown_period, true)
+
+func is_on_cooldown() -> bool:
+	return _cooldown_timer != null
+
+func _default_cooldown_for_actor(actor : Node) -> void:
+	_default_cooldown()
+
+func is_on_cooldown_for(actor : Node) -> bool:
+	return is_on_cooldown()
+
+func start_cooldown_for_actor(actor : Node, duration : float, force : bool) -> void:
+	start_cooldown(duration, force)
+
+func start_cooldown(duration : float, force : bool) -> bool:
+	if duration <= 0.0:
+		push_warning("Activatable::start_cooldown() called with invalid duration on node " + str(get_path()))
 		return false
-	if is_being_activated_by(actor):
+	if is_on_cooldown() and not force:
 		return false
-	if not is_instant() and is_being_activated():
-		return false
+	_cooldown_timer = _create_cooldown_timer(duration)
+	cooldown_started.emit(self, null)
+	await _cooldown_timer.timeout
+	reset_cooldown(true)
 	return true
 
-func is_being_activated() -> bool:
-	return _current_actor != null
+func reset_cooldown(emit_signals : bool) -> bool:
+	if _cooldown_timer:
+		_cooldown_timer.stop()
+		_cooldown_timer.queue_free()
+		if emit_signals:
+			cooldown_ended.emit(self, null)
+		return true
+	return false
 
-func is_being_activated_by(actor : Node) -> bool:
-	return _current_actor == actor
+func _create_cooldown_timer(duration : float) -> SceneTreeTimer:
+	return get_tree().create_timer(duration, false)
+
+#endregion
