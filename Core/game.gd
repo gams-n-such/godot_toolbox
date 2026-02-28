@@ -1,7 +1,8 @@
 # Register this as a global autoload
 extends Node
 
-@export_flags_3d_render var default_camera_layers 
+@export_flags_3d_render var default_camera_layers
+@export_flags_3d_render var editor_camera_layers
 
 func _ready() -> void:
 	pass
@@ -10,7 +11,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_exit"):
 		quit_to_desktop()
 	elif event.is_action_pressed("debug_mouse"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE
+		toggle_mouse_cursor()
+	elif event.is_action_pressed("debug_dev_view"):
+		toggle_dev_view()
+
+func toggle_mouse_cursor() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE
 
 #region Pause
 
@@ -96,5 +102,34 @@ func free_transient_scenes() -> void:
 	for scene in transient_scenes:
 		if is_instance_valid(scene):
 			scene.queue_free()
+
+#endregion
+
+#region Dev View
+# TODO: move to camera system
+
+func toggle_dev_view() -> void:
+	toggle_dev_view_3d()
+	toggle_dev_view_2d()
+
+func toggle_dev_view_3d() -> bool:
+	var camera_3d := get_viewport().get_camera_3d()
+	if camera_3d:
+		if camera_3d.cull_mask & editor_camera_layers == 0:
+			camera_3d.cull_mask |= editor_camera_layers
+		else:
+			camera_3d.cull_mask &= ~editor_camera_layers
+		return true
+	return false
+
+func toggle_dev_view_2d() -> bool:
+	var camera_2d := get_viewport().get_camera_2d()
+	if camera_2d:
+		if camera_2d.cull_mask & editor_camera_layers == 0:
+			camera_2d.cull_mask |= editor_camera_layers
+		else:
+			camera_2d.cull_mask &= ~editor_camera_layers
+		return true
+	return false
 
 #endregion

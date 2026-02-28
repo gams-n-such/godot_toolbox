@@ -9,6 +9,7 @@
 process_mode = 3
 script = ExtResource("1_t3eon")
 default_camera_layers = 1
+editor_camera_layers = 524288
 title_scene = ExtResource("2_htkch")
 pause_menu_scene = ExtResource("3_52drc")
 
