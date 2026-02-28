@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ih3ih8cletjd"]
+
+[ext_resource type="Script" uid="uid://ldleajyf28mf" path="res://Gameplay3D/Interactions/interaction_ray_3d.gd" id="1_s8xwr"]
+
+[node name="InteractionRay3D" type="RayCast3D" unique_id=1578424873]
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("1_s8xwr")
