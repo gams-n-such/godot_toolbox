@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bc7t0l0n2v1lu" path="res://Gameplay3D/Triggers/player_trigger_sphere.tscn" id="7_4ksgo"]
 [ext_resource type="PackedScene" uid="uid://vfhedaqupk13" path="res://Gameplay3D/Labels/node_name_3d.tscn" id="8_4ksgo"]
 [ext_resource type="PackedScene" uid="uid://dv7jl7xhxqf5h" path="res://Gameplay3D/Interactions/test_interactable_3d.tscn" id="9_tphcg"]
+[ext_resource type="PackedScene" uid="uid://ca3h660m4iob6" path="res://Gameplay3D/Interactions/interaction_sphere.tscn" id="10_y2tcx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fktsr"]
 sky_top_color = Color(0.23538089, 0.5855123, 0.7892152, 1)
@@ -86,6 +87,17 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0.
 [node name="NodeName3D" parent="PlayerTriggerTest" unique_id=1350550239 instance=ExtResource("8_4ksgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8889847, -0.4694233)
 text = "PlayerTriggerTest"
+
+[node name="InteractionTest" parent="." unique_id=737240556 instance=ExtResource("9_tphcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2953386, 1.752475, 19.004707)
+
+[node name="InteractionSphere" parent="InteractionTest" unique_id=1303982047 node_paths=PackedStringArray("target") instance=ExtResource("10_y2tcx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+target = NodePath("..")
+
+[node name="NodeName3D" parent="InteractionTest" unique_id=676748775 instance=ExtResource("8_4ksgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8889847, -0.4694233)
+text = "InteractionTest"
 
 [connection signal="body_entered" from="PlatformingPlayerSpawner/PlayerTriggerSphere" to="PlatformingPlayerSpawner" method="respawn_player" unbinds=1]
 [connection signal="body_entered" from="FloatingPlayerSpawner/PlayerTriggerSphere" to="FloatingPlayerSpawner" method="respawn_player" unbinds=1]
