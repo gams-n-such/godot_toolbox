@@ -77,13 +77,15 @@ func has_cooldown() -> bool:
 	return cooldown_period > 0.0
 
 func _default_cooldown() -> void:
-	start_cooldown(cooldown_period, true)
+	if has_cooldown():
+		start_cooldown(cooldown_period, true)
 
 func is_on_cooldown() -> bool:
 	return _cooldown_timer != null
 
 func _default_cooldown_for_actor(actor : Node) -> void:
-	_default_cooldown()
+	if has_cooldown():
+		_default_cooldown()
 
 func is_on_cooldown_for(actor : Node) -> bool:
 	return is_on_cooldown()
