@@ -39,9 +39,9 @@ folder_colors={
 
 [global_group]
 
-Player=""
-Triggers=""
-Interactables=""
+Player="Player avatar"
+Triggers="Areas that monitor collisions"
+Interactable="Must implement get_activatable() method, which returns an Activatable node"
 
 [input]
 

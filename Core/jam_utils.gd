@@ -97,29 +97,17 @@ static func deal_damage(target : Node, damage : float) -> bool:
 
 #region Interactions
 
-# TODO: unify 2D/3D interactions
+const _activatable_getter := &"get_activatable"
 
-static func get_interactable_3d_from(child_node : Node) -> InteractionVolume3D:
+static func get_activatable_from(child_node : Node) -> Activatable:
 	var interactable := find_parent_in_group(child_node, group_interactable)
 	if not interactable:
 		push_warning("Node " + str(child_node) + " is not a child of an Interactable node!")
 		return null
-	var trigger := interactable as InteractionVolume3D
-	if not trigger:
-		push_error("Intaractable node " + str(interactable) + " is not an InteractionTrigger")
+	if not interactable.has_method(_activatable_getter):
+		push_error("Intaractable node " + str(interactable) + " does not implement get_activatable() method")
 		return null
-	return trigger
-
-static func get_interactable_2d_from(child_node : Node) -> InteractionVolume2D:
-	var interactable := find_parent_in_group(child_node, group_interactable)
-	if not interactable:
-		push_warning("Node " + str(child_node) + " is not a child of an Interactable node!")
-		return null
-	var trigger := interactable as InteractionVolume2D
-	if not trigger:
-		push_error("Intaractable node " + str(interactable) + " is not an InteractionTrigger")
-		return null
-	return trigger
+	return interactable.get_activatable()
 
 #endregion
 
