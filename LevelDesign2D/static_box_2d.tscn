@@ -6,8 +6,11 @@
 size = Vector2(100, 100)
 
 [node name="StaticBox2D" type="StaticBody2D" unique_id=1246526892]
+modulate = Color(0.8782205, 0.8782205, 0.8782205, 1)
 collision_mask = 0
 script = ExtResource("1_e1ean")
+size = Vector2(100, 100)
+color = Color(0.8782205, 0.8782205, 0.8782205, 1)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1723566542]
 unique_name_in_owner = true

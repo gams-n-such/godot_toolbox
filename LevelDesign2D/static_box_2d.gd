@@ -30,7 +30,7 @@ func _update_size() -> void:
 	_color_rect.size = size
 	_color_rect.position = -size / 2.0
 
-var _color : Color = Color.WHITE
+var _color : Color = Color.GRAY
 @export var color : Color:
 	get:
 		return _color

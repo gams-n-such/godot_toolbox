@@ -10,7 +10,6 @@ script = ExtResource("1_mo7ny")
 [node name="StaticBox2D" parent="." unique_id=1246526892 instance=ExtResource("2_mm5ou")]
 position = Vector2(642, 443)
 size = Vector2(839.99994, 100)
-color = Color(1, 1, 1, 1)
 
 [node name="PlatformingCharacter2D" parent="." unique_id=978459321 instance=ExtResource("3_5lqkn")]
 position = Vector2(637, 306)
