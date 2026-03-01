@@ -109,6 +109,8 @@ func _update_active_target() -> void:
 	current_target = find_best_target(available_targets)
 
 func find_best_target(targets : Array[Node]) -> Node:
+	if targets.is_empty():
+		return null
 	var result : Node = null
 	# HACK:
 	# var result_priority : float = 10000.0
