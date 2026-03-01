@@ -17,7 +17,7 @@ var _mesh_res : BoxMesh:
 	get:
 		return %Mesh.mesh
 
-var _size : Vector3 = Vector3(1.0, 1.0, 1.0)
+var _size : Vector3 = Vector3.ONE
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size : Vector3:
 	get:
 		return _size

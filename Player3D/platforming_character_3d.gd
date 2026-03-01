@@ -50,7 +50,6 @@ func _process_input(delta : float, desired_speed : float, acceleration_rate : fl
 		velocity.y = jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := JamUtils.get_move_input_dir_2d()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var horizontal_direction := Vector2(direction.x, direction.z)
