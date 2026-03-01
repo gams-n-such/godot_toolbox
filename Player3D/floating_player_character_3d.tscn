@@ -11,6 +11,9 @@ radius = 0.4
 [sub_resource type="SphereMesh" id="SphereMesh_2tprb"]
 material = ExtResource("2_wn7dt")
 
+[sub_resource type="PrismMesh" id="PrismMesh_u1jfl"]
+size = Vector3(0.8, 0.8, 0.2)
+
 [node name="FloatingPlayerCharacter3D" type="CharacterBody3D" unique_id=428254066 groups=["Player"]]
 collision_layer = 2
 collision_mask = 49
@@ -38,3 +41,7 @@ owning_actor = NodePath("../..")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1175823595]
 mesh = SubResource("SphereMesh_2tprb")
+
+[node name="FrontArrow" type="MeshInstance3D" parent="." unique_id=1783401251]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.42826986, -0.12872458)
+mesh = SubResource("PrismMesh_u1jfl")
