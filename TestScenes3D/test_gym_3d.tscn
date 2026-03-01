@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://g8x4b47cjbv2"]
 
 [ext_resource type="PackedScene" uid="uid://c1o3vaktoi5tm" path="res://LevelDesign3D/Blockout/floor_3d.tscn" id="1_3tx6o"]
-[ext_resource type="Script" uid="uid://1pi61wiwf2lr" path="res://TestScenes/test_gym_3d.gd" id="1_hv080"]
+[ext_resource type="Script" uid="uid://1pi61wiwf2lr" path="res://TestScenes3D/test_gym_3d.gd" id="1_hv080"]
 [ext_resource type="PackedScene" uid="uid://dsu4q0hn65f0h" path="res://LevelDesign3D/Blockout/static_box_3d.tscn" id="2_3hv1k"]
 [ext_resource type="PackedScene" uid="uid://dyh2h8fiesbc2" path="res://Player3D/floating_player_character_3d.tscn" id="3_fktsr"]
 [ext_resource type="PackedScene" uid="uid://bposkrfwo5wsd" path="res://Player3D/player_spawner_3d.tscn" id="5_6sg15"]

@@ -38,7 +38,7 @@ folder_colors={
 "res://Gameplay3D/": "teal",
 "res://LevelDesign3D/": "yellow",
 "res://Player3D/": "red",
-"res://TestScenes/": "orange",
+"res://TestScenes3D/": "orange",
 "res://UI/": "green"
 }
 
