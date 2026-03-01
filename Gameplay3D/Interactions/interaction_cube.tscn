@@ -9,7 +9,7 @@
 material = ExtResource("2_kx2t0")
 
 [node name="InteractionCube" type="Area3D" unique_id=1303982047 groups=["Interactable"]]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_3qxtq")

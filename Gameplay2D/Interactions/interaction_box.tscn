@@ -6,6 +6,8 @@
 size = Vector2(100, 100)
 
 [node name="InteractionBox" type="Area2D" unique_id=2049525072]
+collision_layer = 8
+collision_mask = 0
 monitoring = false
 script = ExtResource("1_h0jb4")
 

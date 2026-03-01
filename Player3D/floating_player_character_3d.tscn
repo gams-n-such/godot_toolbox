@@ -12,6 +12,8 @@ radius = 0.4
 material = ExtResource("2_wn7dt")
 
 [node name="FloatingPlayerCharacter3D" type="CharacterBody3D" unique_id=428254066 groups=["Player"]]
+collision_layer = 2
+collision_mask = 49
 motion_mode = 1
 script = ExtResource("1_2tprb")
 hud_scene = ExtResource("2_24otk")

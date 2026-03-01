@@ -6,6 +6,8 @@
 radius = 50.0
 
 [node name="InteractionCircle" type="Area2D" unique_id=2049525072]
+collision_layer = 8
+collision_mask = 0
 monitoring = false
 script = ExtResource("1_r5315")
 

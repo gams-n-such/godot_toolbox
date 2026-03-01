@@ -119,7 +119,18 @@ interact={
 
 3d_render/layer_1="Gameplay"
 3d_render/layer_20="Editor"
+2d_physics/layer_1="World"
 3d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+3d_physics/layer_2="Player"
+2d_physics/layer_3="Triggers"
+3d_physics/layer_3="Triggers"
+2d_physics/layer_4="Interactions"
+3d_physics/layer_4="Interactions"
+2d_physics/layer_5="Enemies"
+3d_physics/layer_5="Enemies"
+2d_physics/layer_6="Projectiles"
+3d_physics/layer_6="Projectiles"
 
 [physics]
 

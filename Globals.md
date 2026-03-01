@@ -6,10 +6,10 @@ Collision layers are currently the same in 2D/3D. This list is a WIP and is subj
 
 1. World — walls, platforms, etc.
 2. Player — player character
-3. Enemies — enemy units
-4. Projectiles — 
-5. Triggers — trigger volumes of all kinds
-6. Interactions — separate layer for interaction volumes
+3. Triggers — trigger volumes of all kinds
+4. Interactions — separate layer for interaction volumes
+5. Enemies — enemy units
+6. Projectiles — 
 7. -
 8. -
 9. -
