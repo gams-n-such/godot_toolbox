@@ -1,7 +1,7 @@
-class_name InteractDetectionRay3D
-extends RayCast3D
+class_name InteractDetectionArea3D
+extends Area3D
 
-# TODO: solve code duplication with detection area
+# TODO: solve code duplication with detection ray
 # TODO: manage interactions here here
 # TODO: Interaction accepter volume
 
@@ -13,27 +13,9 @@ signal interaction_aborted(object : Activatable)
 
 @export var owning_actor : Node = null
 
-var current_target : Node:
-	get:
-		return current_target
-	set(new_target):
-		if new_target == current_target:
-			return
-		var prev_target := current_target
-		current_target = new_target
-		target_changed.emit(new_target, prev_target)
-
 func _ready() -> void:
 	if not owning_actor:
 		owning_actor = owner
-
-
-func _process(_delta: float) -> void:
-	if not is_colliding():
-		return
-	var target := get_collider() as Node
-	if current_target != target:
-		current_target = target
 
 func can_start_interaction() -> bool:
 	return current_target != null
@@ -89,5 +71,62 @@ func _on_object_activation_complete(object : Activatable, actor : Node) -> void:
 func _on_object_activation_aborted(object : Activatable, actor : Node) -> void:
 	if actor == owning_actor:
 		interaction_aborted.emit(object)
+
+#endregion
+
+#region Collisions
+
+var current_target : Node:
+	get:
+		return current_target
+	set(new_target):
+		if new_target == current_target:
+			return
+		var prev_target := current_target
+		current_target = new_target
+		target_changed.emit(new_target, prev_target)
+
+var available_targets : Array[Node]
+
+func _register_target(target : Node) -> void:
+	if not target:
+		return
+	if available_targets.has(target):
+		return
+	if not target.is_in_group(JamUtils.group_interactable):
+		push_error("_register_target() trying to register non-Interactable target " + str(target.get_path()))
+		return
+	available_targets.append(target)
+	_update_active_target()
+
+func _unregister_target(target : Node) -> void:
+	if not available_targets.has(target):
+		return
+	available_targets.erase(target)
+	_update_active_target()
+
+func _update_active_target() -> void:
+	current_target = find_best_target(available_targets)
+
+func find_best_target(targets : Array[Node]) -> Node:
+	var result : Node = null
+	# HACK:
+	# var result_priority : float = 10000.0
+	# TODO: implement priority, for now just use last
+	result = targets.back()
+	return result
+
+func _on_area_entered(area: Area3D) -> void:
+	_register_target(JamUtils.find_interactable_parent(area))
+
+func _on_area_exited(area: Area3D) -> void:
+	_unregister_target(JamUtils.find_interactable_parent(area))
+
+
+func _on_body_entered(body: Node3D) -> void:
+	_register_target(JamUtils.find_interactable_parent(body))
+
+func _on_body_exited(body: Node3D) -> void:
+	_unregister_target(JamUtils.find_interactable_parent(body))
 
 #endregion

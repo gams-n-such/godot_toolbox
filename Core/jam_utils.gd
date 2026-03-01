@@ -107,7 +107,7 @@ static func begin_interaction(instigator : Node, target : Node) -> bool:
 	return false
 
 static func get_activatable_from(child_node : Node) -> Activatable:
-	var interactable := find_parent_in_group(child_node, group_interactable)
+	var interactable := find_interactable_parent(child_node)
 	if not interactable:
 		push_warning("Node " + str(child_node) + " is not a child of an Interactable node!")
 		return null
@@ -115,6 +115,9 @@ static func get_activatable_from(child_node : Node) -> Activatable:
 		push_error("Intaractable node " + str(interactable) + " does not implement get_activatable() method")
 		return null
 	return interactable.get_activatable()
+
+static func find_interactable_parent(child_node : Node) -> Activatable:
+	return find_parent_in_group(child_node, group_interactable)
 
 #endregion
 
