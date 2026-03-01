@@ -36,8 +36,11 @@ folder_colors={
 "res://Gameplay/": "teal",
 "res://Gameplay2D/": "teal",
 "res://Gameplay3D/": "teal",
+"res://LevelDesign2D/": "yellow",
 "res://LevelDesign3D/": "yellow",
+"res://Player2D/": "red",
 "res://Player3D/": "red",
+"res://TestScenes2D/": "orange",
 "res://TestScenes3D/": "orange",
 "res://UI/": "green"
 }
@@ -117,7 +120,9 @@ interact={
 
 [layer_names]
 
+2d_render/layer_1="Gameplay"
 3d_render/layer_1="Gameplay"
+2d_render/layer_20="Editor"
 3d_render/layer_20="Editor"
 2d_physics/layer_1="World"
 3d_physics/layer_1="World"

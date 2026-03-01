@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ck4btderdhdv"]
+
+[ext_resource type="Script" uid="uid://b85usxdhpmew1" path="res://Player2D/platforming_character_2d.gd" id="1_cfa76"]
+[ext_resource type="Texture2D" uid="uid://b2k6m7xba6ul4" path="res://icon.svg" id="2_vmlx2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14xif"]
+
+[node name="PlatformingCharacter2D" type="CharacterBody2D" unique_id=978459321]
+collision_layer = 2
+collision_mask = 49
+script = ExtResource("1_cfa76")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1916158474]
+shape = SubResource("CapsuleShape2D_14xif")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2132005080]
+position = Vector2(-0.5, -0.4999981)
+scale = Vector2(0.16406249, 0.24218749)
+texture = ExtResource("2_vmlx2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=319957365]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b6ljrakpbtk2o"]
+
+[ext_resource type="Script" uid="uid://dsouv37caprh2" path="res://TestScenes2D/test_gym_2d.gd" id="1_mo7ny"]
+[ext_resource type="PackedScene" uid="uid://ef1lk8cytdej" path="res://LevelDesign2D/static_box_2d.tscn" id="2_mm5ou"]
+[ext_resource type="PackedScene" uid="uid://ck4btderdhdv" path="res://Player2D/platforming_character_2d.tscn" id="3_5lqkn"]
+
+[node name="TestGym2D" type="Node2D" unique_id=1325749612]
+script = ExtResource("1_mo7ny")
+
+[node name="StaticBox2D" parent="." unique_id=1246526892 instance=ExtResource("2_mm5ou")]
+position = Vector2(642, 443)
+size = Vector2(839.99994, 100)
+color = Color(1, 1, 1, 1)
+
+[node name="PlatformingCharacter2D" parent="." unique_id=978459321 instance=ExtResource("3_5lqkn")]
+position = Vector2(637, 306)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6v81rd7nylrq" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
 [ext_resource type="PackedScene" uid="uid://g8x4b47cjbv2" path="res://TestScenes3D/test_gym_3d.tscn" id="2_t17p2"]
+[ext_resource type="PackedScene" uid="uid://b6ljrakpbtk2o" path="res://TestScenes2D/test_gym_2d.tscn" id="3_3jj5y"]
 
 [node name="MainMenu" type="Control" unique_id=362125495]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jld46")
 gym_scene_3d = ExtResource("2_t17p2")
+gym_scene_2d = ExtResource("3_3jj5y")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=487912128]
 layout_mode = 1
@@ -37,7 +39,6 @@ text = "3D Gym"
 
 [node name="Gym2DButton" type="Button" parent="CenterContainer/ButtonsVBox" unique_id=743152867]
 layout_mode = 2
-disabled = true
 text = "2D Gym"
 
 [node name="CreditsButton" type="Button" parent="CenterContainer/ButtonsVBox" unique_id=2017876094]
