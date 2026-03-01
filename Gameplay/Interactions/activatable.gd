@@ -11,6 +11,7 @@ signal activation_complete(object : Activatable, actor : Node)
 signal activation_aborted(object : Activatable, actor : Node)
 
 @export var activation_period : float = 1.0
+var _activation_timer : SceneTreeTimer = null
 
 # TODO: implement per-actor activations
 #@export var allow_parallel_activations : bool = false
@@ -41,7 +42,8 @@ func activate(actor : Node) -> bool:
 	_current_actor = actor
 	activation_started.emit(self, actor)
 	if not is_instant():
-		await get_tree().create_timer(activation_period, false).timeout
+		_activation_timer = get_tree().create_timer(activation_period, false)
+		await _activation_timer.timeout
 		if not is_being_activated_by(actor):
 			return false
 	return _try_complete_activation(actor)
@@ -50,12 +52,14 @@ func abort_activation(actor : Node) -> bool:
 	if not is_being_activated_by(actor):
 		return false
 	_current_actor = null
+	_activation_timer.set_time_left(0.0)
 	activation_aborted.emit(self, actor)
 	return true
 
 func _try_complete_activation(actor : Node) -> bool:
 	if not is_being_activated_by(actor):
 		return false
+	_activation_timer = null
 	_default_cooldown_for_actor(actor)
 	_current_actor = null
 	activation_complete.emit(self, actor)
@@ -109,6 +113,7 @@ func reset_cooldown(emit_signals : bool) -> bool:
 	if _cooldown_timer:
 		_cooldown_timer.stop()
 		_cooldown_timer.queue_free()
+		_cooldown_timer = null
 		if emit_signals:
 			cooldown_ended.emit(self, null)
 		return true

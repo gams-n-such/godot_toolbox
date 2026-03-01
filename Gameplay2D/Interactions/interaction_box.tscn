@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0jb4"]
 size = Vector2(100, 100)
 
-[node name="InteractionCircle" type="Area2D" unique_id=2049525072]
+[node name="InteractionBox" type="Area2D" unique_id=2049525072]
 monitoring = false
 script = ExtResource("1_h0jb4")
 

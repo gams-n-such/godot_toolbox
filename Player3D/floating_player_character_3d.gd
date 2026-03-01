@@ -12,14 +12,14 @@ func _physics_process(delta: float) -> void:
 	_process_input(delta, speed, acceleration, deceleration)
 	_process_velocity()
 
-@onready var interaction_ray := %InteractionRay3D
+@onready var interaction_ray := %InteractionRay
 
 func _input(event: InputEvent) -> void:
 	super._input(event)
 	if event.is_action(&"interact"):
 		if interaction_ray.current_target:
 			# TODO: HUD
-			JamUtils.begin_interaction(self, interaction_ray.current_target)
+			interaction_ray.begin_interaction()
 
 func _unhandled_input(event: InputEvent) -> void:
 	super._unhandled_input(event)

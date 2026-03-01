@@ -1,4 +1,4 @@
-class_name InteractionVolume3D
+class_name InteractVolume3D
 extends Area3D
 
 
