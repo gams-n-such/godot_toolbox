@@ -20,6 +20,8 @@ var _tracker_sections : Array = []
 var _paused_tracking : bool = false
 var _paused_started : int = 0
 
+var _total_recorded_sessions_time : float = 0.0
+
 # Utils
 const _PluginUtils := preload("../utils/PluginUtils.gd")
 
@@ -44,6 +46,9 @@ const _PluginUtils := preload("../utils/PluginUtils.gd")
 @onready var save_button : Button = $Margin/Layout/SessionsHeader/SaveButton
 @onready var restore_button : Button = $Margin/Layout/SessionsHeader/RestoreButton
 @onready var clear_button : Button = $Margin/Layout/SessionsHeader/ClearButton
+
+@onready var total_label: Label = $Margin/Layout/TotalHeader/TotalLabel
+@onready var total_time_label: Label = $Margin/Layout/TotalHeader/TotalTimeLabel
 
 @onready var save_file_dialog : FileDialog = $SaveFileDialog
 @onready var restore_file_dialog : FileDialog = $RestoreFileDialog
@@ -81,6 +86,7 @@ func _process(delta: float) -> void:
 
 	_tracker_elapsed += delta
 	status_value_label.text = _format_time(_tracker_elapsed)
+	total_time_label.text = _format_total_time(_tracker_elapsed + _total_recorded_sessions_time)
 
 # Helpers
 func _update_theme() -> void:
@@ -96,6 +102,8 @@ func _update_theme() -> void:
 	clear_button.icon = get_theme_icon("Remove", "EditorIcons")
 
 	sessions_label.add_theme_color_override("font_color", get_theme_color("contrast_color_2", "Editor"))
+	total_label.add_theme_color_override("font_color", get_theme_color("contrast_color_2", "Editor"))
+	total_time_label.add_theme_color_override("font_color", get_theme_color("contrast_color_2", "Editor"))
 	status_label.add_theme_color_override("font_color", get_theme_color("contrast_color_2", "Editor"))
 	no_sessions_label.add_theme_color_override("font_color", get_theme_color("contrast_color_2", "Editor"))
 
@@ -122,6 +130,16 @@ func _format_time(sec: float) -> String:
 
 	return "Working for " + pre_string + str(time) + " " + time_string
 
+func _format_total_time(sec: float) -> String:
+	var time_string = "seconds"
+	var pre_string = ""
+	var time = int(sec)
+	var seconds = time % 60
+	var minutes = (time / 60) % 60
+	var hours = time / 3600
+
+	return "%d:%02d:%02d" % [hours, minutes, seconds]
+
 func _create_session() -> void:
 	var tracker_stopped = Time.get_unix_time_from_system()
 	if (_paused_tracking):
@@ -137,6 +155,7 @@ func _create_session() -> void:
 	session_node.sections = _tracker_sections
 	session_list.add_child(session_node)
 	session_node.name_changed.connect(_on_session_name_changed)
+	_total_recorded_sessions_time += session_node.elapsed_time
 
 	session_name_input.text = "Session #" + str(session_list.get_child_count() + 1)
 
@@ -251,6 +270,8 @@ func _clear_records() -> void:
 		sessions_container.hide()
 		no_sessions_label.show()
 
+	_total_recorded_sessions_time = 0
+
 # Properties
 func set_main_view(view_name: String) -> void:
 	if (_tracker_main_view == view_name):
@@ -302,6 +323,7 @@ func restore_tracked_sessions(sessions : Array) -> void:
 		session_node.sections = session_data.sections
 		session_list.add_child(session_node)
 		session_node.name_changed.connect(_on_session_name_changed)
+		_total_recorded_sessions_time += session_node.elapsed_time
 
 	session_name_input.text = "Session #" + str(session_list.get_child_count() + 1)
 
