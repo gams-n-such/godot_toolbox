@@ -40,11 +40,32 @@ func unpause() -> void:
 func start_game() -> void:
 	load_gameplay_scene()
 
+enum StageResult { IN_PROGRESS, LOOSE, WIN }
+var stage_result : StageResult = StageResult.IN_PROGRESS
+
+func win() -> void:
+	init_game_over(StageResult.WIN)
+
+func loose() -> void:
+	init_game_over(StageResult.LOOSE)
+
 func quit_to_title() -> void:
 	load_title_scene()
 
 func quit_to_desktop() -> void:
 	get_tree().quit()
+
+#endregion
+
+#region Game Over
+
+var _active_game_over_screen : Control
+
+func init_game_over(result : StageResult) -> void:
+	assert(not _active_game_over_screen)
+	stage_result = result
+	_active_game_over_screen = game_over_scene.instantiate() as Control
+	canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _active_game_over_screen)
 
 #endregion
 
@@ -54,6 +75,7 @@ func quit_to_desktop() -> void:
 @export var title_scene : PackedScene
 @export var gameplay_scene : PackedScene
 @export var pause_menu_scene : PackedScene
+@export var game_over_scene : PackedScene
 
 func load_title_scene() -> void:
 	load_level(title_scene)
