@@ -7,24 +7,30 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	Game.start_game()
 
-@export var credits_scene : PackedScene
-
 func _on_credits_button_pressed() -> void:
 	push_warning("Credits are not yet implemented")
 
 func _on_quit_button_pressed() -> void:
 	Game.quit_to_desktop()
 
-#region JamToolbox
+#region Settings
 
-@export var gym_scene_3d : PackedScene
+@export var settings_scene : PackedScene
+var _settings_screen: Control
 
-func _on_gym_3d_button_pressed() -> void:
-	Game.load_level(gym_scene_3d)
+func _on_settings_button_pressed() -> void:
+	_settings_screen = settings_scene.instantiate() as Control
+	Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _settings_screen)
 
-@export var gym_scene_2d : PackedScene
+#endregion
 
-func _on_gym_2d_button_pressed() -> void:
-	Game.load_level(gym_scene_2d)
+#region HowTo
+
+@export var how_to_scene : PackedScene
+var _howto_screen: Control
+
+func _on_tutorial_button_pressed() -> void:
+	_howto_screen = how_to_scene.instantiate() as Control
+	Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _howto_screen)
 
 #endregion
