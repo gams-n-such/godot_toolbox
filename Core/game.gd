@@ -145,13 +145,10 @@ func toggle_dev_view_3d() -> bool:
 	return false
 
 func toggle_dev_view_2d() -> bool:
-	var camera_2d := get_viewport().get_camera_2d()
-	if camera_2d:
-		if camera_2d.cull_mask & editor_camera_layers == 0:
-			camera_2d.cull_mask |= editor_camera_layers
-		else:
-			camera_2d.cull_mask &= ~editor_camera_layers
-		return true
-	return false
+	if get_viewport().canvas_cull_mask & editor_camera_layers == 0:
+		get_viewport().canvas_cull_mask |= editor_camera_layers
+	else:
+		get_viewport().canvas_cull_mask &= ~editor_camera_layers
+	return true
 
 #endregion
