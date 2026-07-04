@@ -1,7 +1,8 @@
 class_name CollisionProfile3D
 extends Resource
 
-const PROFILE_SETTINGS = "addons/collision_profiles/profiles_3d"
+# TODO: deduplicate
+const PROFILE_SETTINGS = "addons/collision_profiles/profiles_table"
 
 @export_category("Collision")
 @export_flags_3d_physics var collision_layer
@@ -11,9 +12,12 @@ func apply_to_node(node : CollisionObject3D) -> void:
 	node.collision_layer = collision_layer
 	node.collision_mask = collision_mask
 
-static func get_profiles_dictionary() -> Dictionary[StringName, CollisionProfile3D]:
-	return ProjectSettings.get_setting(PROFILE_SETTINGS, {})
+static func get_profiles_table() -> CollisionProfilesTable:
+	return ProjectSettings.get_setting(PROFILE_SETTINGS, null) as CollisionProfilesTable
 
 # TODO: autocompletion
 static func from_settings(profile_name : StringName) -> CollisionProfile3D:
-	return get_profiles_dictionary().get(profile_name, null)
+	var profiles_table := get_profiles_table()
+	if profiles_table:
+		return profiles_table.profiles_3d.get(profile_name, null)
+	return null

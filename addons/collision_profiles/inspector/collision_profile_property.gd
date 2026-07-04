@@ -76,7 +76,9 @@ func _get_2d_profile_names() -> Array[StringName]:
 
 func _get_2d_profiles() -> Dictionary[StringName, CollisionProfile2D]:
 	var result : Dictionary[StringName, CollisionProfile2D]
-	result.assign(ProjectSettings.get_setting(CollisionProfile2D.PROFILE_SETTINGS, {}))
+	var table := _get_profiles_table()
+	if table:
+		result = table.profiles_2d
 	return result
 
 func _get_3d_profile_names() -> Array[StringName]:
@@ -84,8 +86,14 @@ func _get_3d_profile_names() -> Array[StringName]:
 
 func _get_3d_profiles() -> Dictionary[StringName, CollisionProfile3D]:
 	var result : Dictionary[StringName, CollisionProfile3D]
-	result.assign(ProjectSettings.get_setting(CollisionProfile3D.PROFILE_SETTINGS, {})) 
+	var table := _get_profiles_table()
+	if table:
+		result = table.profiles_3d
 	return result
+
+static func _get_profiles_table() -> CollisionProfilesTable:
+	# TODO: extract setting path
+	return ProjectSettings.get_setting(CollisionProfile3D.PROFILE_SETTINGS, null) as CollisionProfilesTable
 
 func _on_profile_selected(index : int) -> void:
 	current_profile = profile_selector.get_item_text(index) if index >= 0 else ""
