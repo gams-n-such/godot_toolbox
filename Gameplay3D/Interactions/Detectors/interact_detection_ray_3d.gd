@@ -53,6 +53,7 @@ func abort_interaction() -> void:
 
 #region Activatables
 
+# FIXME: we don't really want to enforce hierarchy between interaction areas and their targets
 func find_activatable_in_target() -> Activatable:
 	return JamUtils.get_activatable_from(current_target)
 

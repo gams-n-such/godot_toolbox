@@ -1,7 +1,7 @@
-class_name InteractDetectionArea3D
-extends Area3D
+class_name InteractDetectionArea2D
+extends Area2D
 
-# TODO: solve code duplication with detection ray and Area2D
+# TODO: solve code duplication with detection ray and Area3D
 # TODO: manage interactions here here
 # TODO: Interaction accepter volume
 
@@ -119,17 +119,17 @@ func find_best_target(targets : Array[Node]) -> Node:
 	return result
 
 # FIXME: we don't really want to enforce hierarchy between interaction areas and their targets
-func _on_area_entered(area: Area3D) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	_register_target(JamUtils.find_interactable_parent(area))
 
-func _on_area_exited(area: Area3D) -> void:
+func _on_area_exited(area: Area2D) -> void:
 	_unregister_target(JamUtils.find_interactable_parent(area))
 
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	_register_target(JamUtils.find_interactable_parent(body))
 
-func _on_body_exited(body: Node3D) -> void:
+func _on_body_exited(body: Node2D) -> void:
 	_unregister_target(JamUtils.find_interactable_parent(body))
 
 #endregion

@@ -19,9 +19,10 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	super._input(event)
 	if event.is_action(&"interact"):
-		if interaction_ray.current_target:
-			# TODO: HUD
+		# TODO: HUD
+		#if interaction_ray.current_target:
 			#interaction_ray.begin_interaction()
+		if interaction_area.current_target:
 			interaction_area.begin_interaction()
 
 func _unhandled_input(event: InputEvent) -> void:

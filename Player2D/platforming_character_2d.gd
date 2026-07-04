@@ -11,9 +11,14 @@ func _physics_process(delta: float) -> void:
 	_process_input(delta, speed, acceleration, deceleration)
 	_process_velocity()
 
+@onready var interaction_area := %InteractionArea
+
 func _input(event: InputEvent) -> void:
 	super._input(event)
-	# TODO: implement interaction
+	if event.is_action(&"interact"):
+		# TODO: HUD
+		if interaction_area.current_target:
+			interaction_area.begin_interaction()
 
 func _unhandled_input(event: InputEvent) -> void:
 	super._unhandled_input(event)

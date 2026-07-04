@@ -12,4 +12,6 @@ monitoring = false
 script = ExtResource("1_r5315")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=784012603]
+light_mask = 0
+visibility_layer = 524288
 shape = SubResource("CircleShape2D_bw3dj")
