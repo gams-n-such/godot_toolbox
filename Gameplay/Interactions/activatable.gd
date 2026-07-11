@@ -3,6 +3,18 @@ extends Node
 
 var _current_actor : Node = null
 
+#region Enabled
+
+@export var enabled : bool = true
+
+#endregion
+
+#region UI
+
+@export var label_text : String = "Activate"
+
+#endregion
+
 #region Activation
 @export_category("Activation")
 
@@ -21,6 +33,8 @@ func is_instant() -> bool:
 
 func can_be_activated_by(actor : Node) -> bool:
 	if not actor:
+		return false
+	if not enabled:
 		return false
 	if is_being_activated_by(actor):
 		return false
@@ -62,6 +76,7 @@ func _try_complete_activation(actor : Node) -> bool:
 	_activation_timer = null
 	_default_cooldown_for_actor(actor)
 	_current_actor = null
+	
 	activation_complete.emit(self, actor)
 	return true
 
