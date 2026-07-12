@@ -116,7 +116,7 @@ static func get_activatable_from(child_node : Node) -> Activatable:
 		return null
 	return interactable.get_activatable()
 
-static func find_interactable_parent(child_node : Node) -> Activatable:
+static func find_interactable_parent(child_node : Node) -> Node:
 	return find_parent_in_group(child_node, group_interactable)
 
 #endregion
