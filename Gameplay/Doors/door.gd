@@ -1,5 +1,5 @@
 class_name Door
-extends Activatable
+extends Node
 
 func _ready() -> void:
 	match state:
@@ -7,10 +7,6 @@ func _ready() -> void:
 			open_instant()
 		DoorState.CLOSED:
 			close_instant()
-	activation_complete.connect(_on_activation_complete)
-
-func _on_activation_complete() -> void:
-	toggle_state()
 
 #region Door
 @export_group("Door", "")
@@ -24,6 +20,7 @@ signal state_changed(door : Door, new_state : DoorState)
 		return state
 	set(new_state):
 		state = new_state
+		print("Door %s is now %s" % [name, str(new_state)])
 		state_changed.emit(self, state)
 
 signal progress_changed(progress : float)
@@ -59,11 +56,10 @@ func is_fully_closed() -> bool:
 	return open_progress <= 0.0
 
 func toggle_state() -> void:
-	match state:
-		DoorState.OPEN:
-			start_closing()
-		DoorState.CLOSED:
-			start_opening()
+	if state == DoorState.OPEN:
+		start_closing()
+	elif state == DoorState.CLOSED:
+		start_opening()
 
 #endregion
 
@@ -100,7 +96,7 @@ var _animation_name : StringName:
 		return open_anim_by_type[animation_type]
 
 func is_animating() -> bool:
-	return animation_player.is_animation_active()
+	return animation_player.is_animation_active() and animation_player.is_playing()
 
 func is_opening() -> bool:
 	return animation_player.is_animation_active() and animation_player.get_playing_speed() > 0

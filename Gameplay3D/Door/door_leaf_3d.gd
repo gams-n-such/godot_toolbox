@@ -17,4 +17,4 @@ func _exit_tree() -> void:
 		logic.progress_changed.disconnect(_on_door_open_progress_changed)
 
 func _on_door_open_progress_changed(progress : float) -> void:
-	door_leaf.global_transform = lerp(closed.transform, open.transform, progress)
+	door_leaf.global_transform = lerp(closed.global_transform, open.global_transform, progress)
