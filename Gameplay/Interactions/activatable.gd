@@ -126,10 +126,10 @@ func start_cooldown(duration : float, force : bool) -> bool:
 
 func reset_cooldown(emit_signals : bool) -> bool:
 	if _cooldown_timer:
-		_cooldown_timer.stop()
-		_cooldown_timer.queue_free()
+		# SceneTreeTimers are freed automatically
 		_cooldown_timer = null
 		if emit_signals:
+			# TODO: per-actor cooldowns
 			cooldown_ended.emit(self, null)
 		return true
 	return false
