@@ -40,6 +40,12 @@ func unpause() -> void:
 func start_game() -> void:
 	load_gameplay_scene()
 
+func restart_level() -> void:
+	pre_level_change()
+	get_tree().reload_current_scene()
+	await get_tree().scene_changed
+	post_level_change()
+
 enum StageResult { IN_PROGRESS, LOOSE, WIN }
 var stage_result : StageResult = StageResult.IN_PROGRESS
 
