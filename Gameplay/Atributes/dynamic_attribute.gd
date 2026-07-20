@@ -28,6 +28,9 @@ func _init_attribute() -> void:
 		_base_value = _starting_value
 		_initialized = true
 
+func set_value(new_value : float) -> void:
+	base_value = new_value
+
 func add(delta : float) -> void:
 	base_value += delta
 

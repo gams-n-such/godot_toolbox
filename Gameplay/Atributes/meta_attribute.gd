@@ -6,6 +6,9 @@ extends Attribute
 
 @abstract func get_backing_attributes() -> Array[Attribute]
 
+func set_value(new_value : float) -> void:
+	assert(false, "MetaAttributes should not be modified directly")
+
 func add(delta : float) -> void:
 	assert(false, "MetaAttributes should not be modified directly")
 

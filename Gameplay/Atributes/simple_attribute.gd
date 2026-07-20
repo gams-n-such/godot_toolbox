@@ -12,5 +12,8 @@ func _init_attribute() -> void:
 func _enter_tree() -> void:
 	_init_attribute()
 
+func set_value(new_value : float) -> void:
+	_update_cached_value(new_value)
+
 func add(delta : float) -> void:
-	_update_cached_value(value + delta)
+	set_value(value + delta)

@@ -24,4 +24,5 @@ func _update_cached_value(new_value : float, emit_signals : bool = true) -> void
 		value_changed.emit(self, new_value, old_value)
 
 # TODO: should modification be in base class?? Basically the only reason it's here is for convenience
+@abstract func set_value(new_value : float) -> void
 @abstract func add(delta : float) -> void
