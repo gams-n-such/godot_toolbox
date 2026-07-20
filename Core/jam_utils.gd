@@ -30,17 +30,41 @@ static func find_parent_in_group(child_node : Node, group : StringName) -> Node:
 
 #endregion
 
-#region Transforms2D
+#region Nodes2D
 
 static func get_unscaled_transform_2d(transform : Transform2D) -> Transform2D:
 	return Transform2D(transform.get_rotation(),transform.origin)
 
+static func get_closest_node_2d(point : Vector2, candidates : Array[Node2D]) -> Node2D:
+	if candidates.is_empty():
+		return null
+	var best_item := candidates[0]
+	var best_dist := best_item.global_position.distance_to(point)
+	for item in candidates:
+		var dist := item.global_position.distance_to(point)
+		if dist < best_dist:
+			best_dist = dist
+			best_item = item
+	return best_item
+
 #endregion
 
-#region Transforms3D
+#region Nodes3D
 
 static func get_unscaled_transform_3d(transform : Transform3D) -> Transform3D:
 	return Transform3D(Basis(transform.basis.get_rotation_quaternion()), transform.origin)
+
+static func get_closest_node_3d(point : Vector3, candidates : Array[Node3D]) -> Node3D:
+	if candidates.is_empty():
+		return null
+	var best_item := candidates[0]
+	var best_dist := best_item.global_position.distance_to(point)
+	for item in candidates:
+		var dist := item.global_position.distance_to(point)
+		if dist < best_dist:
+			best_dist = dist
+			best_item = item
+	return best_item
 
 #endregion
 
