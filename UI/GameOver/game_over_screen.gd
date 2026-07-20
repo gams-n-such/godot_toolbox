@@ -10,7 +10,6 @@ func _enter_tree() -> void:
 
 @onready var win_text: Label = %WinText
 @onready var loose_text: Label = %LooseText
-@onready var progress_text: Label = %ProgressText
 
 func _ready() -> void:
 	win_text.visible = Game.stage_result == Game.StageResult.WIN
