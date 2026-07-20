@@ -6,3 +6,7 @@
 [node name="TitleScene" type="Node" unique_id=2064117561]
 script = ExtResource("1_4bjwq")
 main_menu_scene = ExtResource("2_d43d1")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=565883104]
+unique_name_in_owner = true
+autoplay = true
