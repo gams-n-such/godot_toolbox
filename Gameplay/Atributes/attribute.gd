@@ -7,6 +7,9 @@ extends Node
 # Emitted whenever attribute value changes
 signal value_changed(attribute : Attribute, new_value : float, old_value : float)
 
+enum Tag { NONE, MAX_HEALTH, HEALTH, DAMAGE }
+@export var tag : Tag = Tag.NONE
+
 var _cached_value : float
 var value : float:
 	get:
