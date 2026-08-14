@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*uid://cs34d64dgwg7p"
+AudioManager="*uid://dwtkc13xm1mmw"
 
 [display]
 
@@ -32,6 +33,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 [file_customization]
 
 folder_colors={
+"res://Audio/": "purple",
 "res://Core/": "gray",
 "res://Gameplay/": "teal",
 "res://Gameplay2D/": "teal",
