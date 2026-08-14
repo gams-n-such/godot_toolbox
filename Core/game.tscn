@@ -20,5 +20,11 @@ game_over_scene = ExtResource("4_jcax3")
 [node name="HUD" type="CanvasLayer" parent="CanvasManager" unique_id=994595691]
 layer = 55
 
+[node name="PostProcess" type="CanvasLayer" parent="CanvasManager" unique_id=417566969]
+layer = 65
+
+[node name="Info" type="CanvasLayer" parent="CanvasManager" unique_id=874993984]
+layer = 90
+
 [node name="Menu" type="CanvasLayer" parent="CanvasManager" unique_id=254975533]
 layer = 100
