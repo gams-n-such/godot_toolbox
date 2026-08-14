@@ -19,6 +19,8 @@ func _on_quit_button_pressed() -> void:
 var _settings_screen: Control
 
 func _on_settings_button_pressed() -> void:
+	# TODO: settings
+	assert(false)
 	_settings_screen = settings_scene.instantiate() as Control
 	Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _settings_screen)
 

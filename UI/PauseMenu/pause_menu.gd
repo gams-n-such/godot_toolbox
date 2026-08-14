@@ -27,6 +27,11 @@ func _on_resume_button_pressed() -> void:
 	unpause()
 
 
+func _on_settings_button_pressed() -> void:
+	# TODO: settings
+	assert(false)
+
+
 func _on_title_button_pressed() -> void:
 	Game.quit_to_title()
 
