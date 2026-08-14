@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://mbpwhjgv7obw"]
 
 [ext_resource type="Script" uid="uid://dpiug3vcqj0mf" path="res://UI/GameOver/game_over_screen.gd" id="1_xixk0"]
+[ext_resource type="Script" uid="uid://ce3qsmnhwei1y" path="res://UI/web_helper_button.gd" id="2_g1glf"]
 
 [node name="GameOver" type="Control" unique_id=2127473529]
 process_mode = 3
@@ -41,6 +42,8 @@ text = "Quit to Title"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit to Desktop"
+script = ExtResource("2_g1glf")
+hide_in_web_build = true
 
 [node name="WinText" type="Label" parent="." unique_id=1649415750]
 unique_name_in_owner = true
