@@ -113,6 +113,13 @@ var canvas_manager : CanvasManager = null
 
 #endregion
 
+#region Cameras
+
+# TODO: Camera management
+var cameras : Dictionary[TaggedCamera3D.Tag, TaggedCamera3D]
+
+#endregion
+
 #region Transients
 # TODO: move to separate script
 # TODO: support non-Node objects?
