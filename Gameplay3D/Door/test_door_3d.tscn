@@ -11,9 +11,10 @@ size = Vector3(1.5, 2, 0.2)
 [sub_resource type="BoxMesh" id="BoxMesh_tp06f"]
 size = Vector3(1.5, 2, 0.2)
 
-[node name="Door3D" type="Node3D" unique_id=956573035 node_paths=PackedStringArray("logic") groups=["Interactable"]]
+[node name="Door3D" type="Node3D" unique_id=956573035 node_paths=PackedStringArray("activatable", "door_logic") groups=["Interactable"]]
 script = ExtResource("1_wwagb")
-logic = NodePath("Activatable")
+activatable = NodePath("Activatable")
+door_logic = NodePath("DoorLogic")
 
 [node name="DoorLogic" parent="." unique_id=668994403 instance=ExtResource("2_gljmw")]
 
@@ -31,6 +32,7 @@ closed = NodePath("Closed")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="DoorLeaf3D/Leaf" unique_id=1352937996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1, 0)
+sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLeaf3D/Leaf/AnimatableBody3D" unique_id=643628545]
 shape = SubResource("BoxShape3D_tp06f")
@@ -39,8 +41,8 @@ shape = SubResource("BoxShape3D_tp06f")
 mesh = SubResource("BoxMesh_tp06f")
 
 [node name="Open" type="Node3D" parent="DoorLeaf3D" unique_id=916285980]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Closed" type="Node3D" parent="DoorLeaf3D" unique_id=1270718164]
-transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 0, 0, 0)
 
 [connection signal="activation_complete" from="Activatable" to="DoorLogic" method="toggle_state" unbinds=2]
