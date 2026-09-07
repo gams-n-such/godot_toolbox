@@ -5,13 +5,14 @@ var _base_value : float = 1.0
 var base_value : float:
 	get:
 		return _base_value
-	set(value):
-		_base_value = value
+	set(new_value):
+		_base_value = new_value
 		_request_value_update()
 
 func _init_attribute() -> void:
 	if not _initialized:
 		_base_value = _starting_value
+		_update_cached_value(recalculate_value(), false)
 		_initialized = true
 
 func set_value(new_value : float) -> void:
@@ -50,6 +51,7 @@ func add_modifier(mod_info : AttributeModInfo) -> AttributeMod:
 
 func remove_modifier(mod : AttributeMod):
 	if is_ancestor_of(mod):
+		remove_child(mod)
 		mod.queue_free()
 		_request_value_update()
 

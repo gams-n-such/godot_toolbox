@@ -3,9 +3,9 @@ extends Node
 
 @export var info : AttributeModInfo
 
-var attribute : Attribute:
+var attribute : DynamicAttribute:
 	get:
-		return get_parent() as Attribute
+		return get_parent() as DynamicAttribute
 
 var type : AttributeModInfo.ModType:
 	get:
