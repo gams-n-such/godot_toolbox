@@ -28,7 +28,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/editor_theme_explorer/plugin.cfg", "res://addons/time-tracker/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/asset_placer/plugin.cfg", "res://addons/editor_theme_explorer/plugin.cfg", "res://addons/time-tracker/plugin.cfg")
 
 [file_customization]
 
