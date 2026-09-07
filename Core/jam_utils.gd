@@ -92,6 +92,35 @@ static func find_tagged_attribute(target : Node, tag : Attribute.Tag) -> Attribu
 
 #endregion
 
+#region Tags
+
+## Only searches direct children
+static func get_tag_container(target : Node) -> TagContainer:
+	var result : TagContainer = null
+	if target:
+		for node in target.get_children():
+			if node is TagContainer:
+				result = (node as TagContainer)
+				break
+	return result
+
+# TODO: replace with a better name
+static func check_tag(target : Node, tag : StringName) -> bool:
+	var tags := get_tag_container(target)
+	if tags:
+		return tags.has_tag(tag)
+	else:
+		return false
+
+static func get_tag_count(target : Node, tag : StringName) -> int:
+	var tags := get_tag_container(target)
+	if tags:
+		return tags.get_tag_count(tag)
+	else:
+		return 0
+
+#endregion
+
 #region Groups
 
 static func get_shared_groups(node_a : Node, node_b : Node) -> Array[StringName]:
