@@ -8,6 +8,15 @@ extends Attribute
 @export var has_max_value : bool = false
 @export var max_value : float = 1.0
 
+var percent : float:
+	get:
+		if has_max_value:
+			# TODO: subtract min value
+			return value / max_value
+		else:
+			# FIXME: undefined
+			return 1.0
+
 var _initialized := false
 func _init_attribute() -> void:
 	if not _initialized:

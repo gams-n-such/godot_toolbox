@@ -9,15 +9,6 @@ var base_value : float:
 		_base_value = value
 		_request_value_update()
 
-var percent : float:
-	get:
-		if has_max_value:
-			# TODO: subtract min value
-			return value / max_value
-		else:
-			# FIXME: undefined
-			return 1.0
-
 func _init_attribute() -> void:
 	if not _initialized:
 		_base_value = _starting_value
