@@ -37,6 +37,22 @@ func unpause() -> void:
 
 #region Game
 
+var last_checkpoint : Checkpoint = null
+
+func restart_from_last_checkpoint() -> bool:
+	if last_checkpoint:
+		last_checkpoint.request_restart()
+		return true
+	else:
+		return false
+
+func clear_cheackpoint() -> void:
+	last_checkpoint = null
+
+#endregion
+
+#region Game Flow
+
 func start_game() -> void:
 	load_gameplay_scene()
 
