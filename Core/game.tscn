@@ -24,6 +24,7 @@ script = ExtResource("5_gwpo4")
 metadata/_custom_type_script = "uid://cf7i1a3dh3at4"
 
 [node name="GameStateMachine" type="Node" parent="." unique_id=1842708992 node_paths=PackedStringArray("INITIAL_STATE")]
+unique_name_in_owner = true
 script = ExtResource("5_lqrbg")
 INITIAL_STATE = NodePath("MainMenu")
 metadata/_custom_type_script = "uid://cmo5n6t4g2sel"
@@ -37,6 +38,7 @@ script = ExtResource("7_j36f3")
 metadata/_custom_type_script = "uid://hm4mr3v1hfai"
 
 [node name="CanvasManager" parent="." unique_id=2009050083 instance=ExtResource("2_xt2r0")]
+unique_name_in_owner = true
 
 [node name="HUD" type="CanvasLayer" parent="CanvasManager" unique_id=994595691]
 layer = 55

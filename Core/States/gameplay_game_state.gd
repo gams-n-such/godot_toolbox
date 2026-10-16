@@ -10,6 +10,8 @@ func enter(prev_state : State) -> void:
 	
 	_show_hud()
 	
+	Game.load_gameplay_scene()
+	
 	if countdown_scene:
 		var countdown := countdown_scene.instantiate() as Control
 		Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, countdown)

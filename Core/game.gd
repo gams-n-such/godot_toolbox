@@ -62,7 +62,7 @@ func restart_from_last_checkpoint() -> bool:
 	else:
 		return false
 
-func clear_cheackpoint() -> void:
+func clear_checkpoint() -> void:
 	last_checkpoint = null
 
 #endregion
@@ -70,7 +70,7 @@ func clear_cheackpoint() -> void:
 #region Game Flow
 
 func start_game() -> void:
-	load_gameplay_scene()
+	change_game_state(GameState.GAMEPLAY)
 
 func restart_level() -> void:
 	pre_level_change()
