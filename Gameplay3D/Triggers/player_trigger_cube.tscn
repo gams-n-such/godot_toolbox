@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://q022o76q0rw5"]
 
-[ext_resource type="Material" uid="uid://d38f7bvc6enmu" path="res://Gameplay3D/Triggers/dev_trigger_material.tres" id="1_02hpe"]
+[ext_resource type="Material" uid="uid://d38f7bvc6enmu" path="res://Gameplay3D/Triggers/dev_player_trigger_material.tres" id="1_02hpe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_73gjn"]
 
