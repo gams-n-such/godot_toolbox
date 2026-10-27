@@ -89,7 +89,7 @@ func loose() -> void:
 	init_game_over(StageResult.LOOSE)
 
 func quit_to_title() -> void:
-	load_title_scene()
+	await load_title_scene()
 
 func quit_to_desktop() -> void:
 	get_tree().quit()
@@ -117,15 +117,16 @@ func init_game_over(result : StageResult) -> void:
 @export var game_over_scene : PackedScene
 
 func load_title_scene() -> void:
-	load_level(title_scene)
+	await load_level(title_scene)
 
 func load_gameplay_scene() -> void:
-	load_level(gameplay_scene)
+	await load_level(gameplay_scene)
 
 func load_level(level_scene : PackedScene) -> void:
 	if level_scene:
 		pre_level_change()
 		get_tree().change_scene_to_packed(level_scene)
+		await get_tree().scene_changed
 		post_level_change()
 	else:
 		push_error("Trying to load empty level")
