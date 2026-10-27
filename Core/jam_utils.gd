@@ -19,6 +19,20 @@ const layer_ui_hud := &"HUD"
 
 #endregion
 
+#region Objects
+
+static func get_object_type_name(object: Object) -> String:
+	if not object:
+		return "NULL_TYPE"
+	var script := object.get_script() as Script
+	if script:
+		# ASSUMING: all scripts have names
+		return script.get_instance_base_type()
+	#else
+	return object.get_class()
+
+#endregion
+
 #region Nodes
 
 static func find_parent_in_group(child_node : Node, group : StringName) -> Node:
