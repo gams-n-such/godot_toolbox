@@ -15,11 +15,11 @@
 [node name="Game" type="Node" unique_id=736238743]
 process_mode = 3
 script = ExtResource("1_t3eon")
-default_camera_layers = 1
-editor_camera_layers = 524288
 title_scene = ExtResource("2_htkch")
 pause_menu_scene = ExtResource("3_52drc")
 game_over_scene = ExtResource("4_jcax3")
+default_camera_layers = 1
+editor_camera_layers = 524288
 
 [node name="WebMouseCaptor" type="Node" parent="." unique_id=245208459]
 script = ExtResource("5_gwpo4")

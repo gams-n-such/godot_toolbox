@@ -1,9 +1,6 @@
 # Register this as a global autoload
 extends Node
 
-@export_flags_3d_render var default_camera_layers
-@export_flags_3d_render var editor_camera_layers
-
 func _ready() -> void:
 	pass
 
@@ -177,6 +174,9 @@ func free_transient_scenes() -> void:
 #region Dev View
 # TODO: move to camera system
 
+@export_flags_3d_render var default_camera_layers
+@export_flags_3d_render var editor_camera_layers
+
 func toggle_dev_view() -> void:
 	toggle_dev_view_3d()
 	toggle_dev_view_2d()
@@ -192,10 +192,7 @@ func toggle_dev_view_3d() -> bool:
 	return false
 
 func toggle_dev_view_2d() -> bool:
-	if get_viewport().canvas_cull_mask & editor_camera_layers == 0:
-		get_viewport().canvas_cull_mask |= editor_camera_layers
-	else:
-		get_viewport().canvas_cull_mask &= ~editor_camera_layers
+	get_viewport().canvas_cull_mask ^= editor_camera_layers
 	return true
 
 #endregion
