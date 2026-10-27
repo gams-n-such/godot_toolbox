@@ -1,6 +1,7 @@
 class_name JamUtils
 
 # Add constant names here
+# Not input actions, as they have sufficient editor hints
 #region Globals
 
 # Groups:
@@ -222,6 +223,9 @@ static func get_move_input_dir_3d() -> Vector3:
 	var axis_vertical := Input.get_axis(&"crouch", &"jump")
 	var dir_3d := Vector3(dir_horizontal.x, axis_vertical, dir_horizontal.y)
 	return dir_3d
+
+static func get_camera_input_dir() -> Vector2:
+	return Input.get_vector(&"camera_left", &"camera_right", &"camera_up", &"camera_down")
 
 #endregion
 
