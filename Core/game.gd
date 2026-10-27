@@ -143,7 +143,7 @@ func post_level_change() -> void:
 #region UI
 
 # TODO: this shall not work in split-scren = cannot make it an autoload
-@onready var canvas_manager : CanvasManager = %CanvasManager
+var canvas_manager : CanvasManager = null
 
 #endregion
 
