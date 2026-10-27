@@ -70,7 +70,7 @@ func clear_checkpoint() -> void:
 #region Game Flow
 
 func start_game() -> void:
-	change_game_state(GameState.GAMEPLAY)
+	load_gameplay_scene()
 
 func restart_level() -> void:
 	pre_level_change()
