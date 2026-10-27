@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0ap3o5uyhhv" path="res://Core/game.gd" id="1_t3eon"]
 [ext_resource type="PackedScene" uid="uid://dmx8q6tej75td" path="res://TitleScene/title_scene.tscn" id="2_htkch"]
+[ext_resource type="Resource" uid="uid://bk4w031c0lk4r" path="res://Core/default_game_config.tres" id="2_qe6tj"]
 [ext_resource type="PackedScene" uid="uid://be8iqphg5okyn" path="res://UI/CanvasManager/canvas_manager.tscn" id="2_xt2r0"]
 [ext_resource type="PackedScene" uid="uid://uij46cficj03" path="res://UI/PauseMenu/pause_menu.tscn" id="3_52drc"]
 [ext_resource type="PackedScene" uid="uid://mbpwhjgv7obw" path="res://UI/GameOver/game_over_screen.tscn" id="4_jcax3"]
@@ -15,6 +16,7 @@
 [node name="Game" type="Node" unique_id=736238743]
 process_mode = 3
 script = ExtResource("1_t3eon")
+config = ExtResource("2_qe6tj")
 title_scene = ExtResource("2_htkch")
 pause_menu_scene = ExtResource("3_52drc")
 game_over_scene = ExtResource("4_jcax3")
