@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://be8iqphg5okyn" path="res://UI/CanvasManager/canvas_manager.tscn" id="2_xt2r0"]
 [ext_resource type="PackedScene" uid="uid://uij46cficj03" path="res://UI/PauseMenu/pause_menu.tscn" id="3_52drc"]
 [ext_resource type="PackedScene" uid="uid://mbpwhjgv7obw" path="res://UI/GameOver/game_over_screen.tscn" id="4_jcax3"]
-[ext_resource type="Script" uid="uid://cf7i1a3dh3at4" path="res://UI/web_mouse_captor.gd" id="5_gwpo4"]
+[ext_resource type="Script" uid="uid://cf7i1a3dh3at4" path="res://UI/Web/web_mouse_captor.gd" id="5_gwpo4"]
 [ext_resource type="Script" uid="uid://cmo5n6t4g2sel" path="res://Gameplay/StateMachine/state_machine.gd" id="5_lqrbg"]
 [ext_resource type="Script" uid="uid://byxbbtwkua6nq" path="res://Core/States/main_menu_game_state.gd" id="6_43kao"]
 [ext_resource type="Script" uid="uid://hm4mr3v1hfai" path="res://Core/States/gameplay_game_state.gd" id="7_j36f3"]

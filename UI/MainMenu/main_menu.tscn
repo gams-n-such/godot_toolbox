@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://mhbgol2lxq6b" path="res://UI/Dev/dev_load_scene_button.gd" id="2_h8rmy"]
 [ext_resource type="PackedScene" uid="uid://g8x4b47cjbv2" path="res://TestScenes3D/test_gym_3d.tscn" id="2_t17p2"]
 [ext_resource type="PackedScene" uid="uid://b6ljrakpbtk2o" path="res://TestScenes2D/test_gym_2d.tscn" id="3_3jj5y"]
-[ext_resource type="Script" uid="uid://ce3qsmnhwei1y" path="res://UI/web_helper_button.gd" id="5_iyy2y"]
+[ext_resource type="Script" uid="uid://ce3qsmnhwei1y" path="res://UI/Web/web_helper_button.gd" id="5_iyy2y"]
 
 [node name="MainMenu" type="Control" unique_id=362125495]
 layout_mode = 3
