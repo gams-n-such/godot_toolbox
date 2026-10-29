@@ -149,6 +149,12 @@ func post_level_change() -> void:
 
 #endregion
 
+#region Tutorial
+
+@onready var tutorial_manager: Tutorial = %TutorialManager
+
+#endregion
+
 #region Cameras
 
 # TODO: Camera management

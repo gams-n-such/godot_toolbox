@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://hm4mr3v1hfai" path="res://Core/States/gameplay_game_state.gd" id="7_j36f3"]
 [ext_resource type="PackedScene" uid="uid://c6uqpxfa40845" path="res://UI/HUD/hud.tscn" id="9_4qclw"]
 [ext_resource type="PackedScene" uid="uid://dpoay026t1lnn" path="res://UI/MainMenu/main_menu.tscn" id="10_j0bao"]
+[ext_resource type="PackedScene" uid="uid://fc6rtwowot7p" path="res://Gameplay/Tutorial/tutorial_manager.tscn" id="12_j0bao"]
 
 [node name="Game" type="Node" unique_id=736238743]
 process_mode = 3
@@ -43,6 +44,9 @@ script = ExtResource("7_j36f3")
 mouse_captor = NodePath("../../WebMouseCaptor")
 hud_scene = ExtResource("9_4qclw")
 metadata/_custom_type_script = "uid://hm4mr3v1hfai"
+
+[node name="TutorialManager" parent="." unique_id=1951017320 instance=ExtResource("12_j0bao")]
+unique_name_in_owner = true
 
 [node name="CanvasManager" parent="." unique_id=2009050083 instance=ExtResource("2_xt2r0")]
 unique_name_in_owner = true
