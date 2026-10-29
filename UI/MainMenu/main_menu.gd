@@ -36,3 +36,14 @@ func _on_tutorial_button_pressed() -> void:
 	Game.canvas_manager.push_content_to_layer(JamUtils.layer_ui_menu, _howto_screen)
 
 #endregion
+
+
+#region Links
+
+func _on_jam_page_button_pressed() -> void:
+	OS.shell_open("https://github.com/gams-n-such")
+
+func _on_jam_repo_button_pressed() -> void:
+	OS.shell_open("https://github.com/gams-n-such")
+
+#endregion
