@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpoay026t1lnn"]
 
 [ext_resource type="Script" uid="uid://c6v81rd7nylrq" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
+[ext_resource type="Theme" uid="uid://cg4x0t0jwspjj" path="res://UI/Themes/main_menu_theme.tres" id="1_trkrl"]
 [ext_resource type="Script" uid="uid://mhbgol2lxq6b" path="res://UI/Dev/dev_load_scene_button.gd" id="2_h8rmy"]
 [ext_resource type="PackedScene" uid="uid://g8x4b47cjbv2" path="res://TestScenes3D/test_gym_3d.tscn" id="2_t17p2"]
 [ext_resource type="PackedScene" uid="uid://b6ljrakpbtk2o" path="res://TestScenes2D/test_gym_2d.tscn" id="3_3jj5y"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_trkrl")
 script = ExtResource("1_jld46")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=487912128]
@@ -24,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ButtonsVBox" type="VBoxContainer" parent="CenterContainer" unique_id=212692656]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="CenterContainer/ButtonsVBox" unique_id=839759193]

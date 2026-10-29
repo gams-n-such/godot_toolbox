@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://mbpwhjgv7obw"]
 
+[ext_resource type="Theme" uid="uid://p1icosi42oru" path="res://UI/Themes/menu_theme.tres" id="1_m6qc7"]
 [ext_resource type="Script" uid="uid://dpiug3vcqj0mf" path="res://UI/GameOver/game_over_screen.gd" id="1_xixk0"]
 [ext_resource type="Script" uid="uid://ce3qsmnhwei1y" path="res://UI/Web/web_helper_button.gd" id="2_g1glf"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_m6qc7")
 script = ExtResource("1_xixk0")
 
 [node name="BG" type="PanelContainer" parent="." unique_id=1065690763]
