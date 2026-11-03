@@ -9,13 +9,14 @@ func _enter_tree() -> void:
 	Game.pause()
 
 func _ready() -> void:
-	pass
+	grab_focus.call_deferred()
 
 func _exit_tree() -> void:
 	Game.unpause()
 
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed(&"pause"):
+		accept_event()
 		unpause()
 
 func unpause() -> void:

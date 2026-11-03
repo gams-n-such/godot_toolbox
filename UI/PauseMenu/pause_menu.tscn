@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jesmc")
+focus_mode = 2
 script = ExtResource("1_t3iro")
 
 [node name="BG" type="PanelContainer" parent="." unique_id=1065690763]
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="BG" unique_id=361884279]
 layout_mode = 2
